@@ -44,6 +44,7 @@ export default function ContatoPage() {
           </div>
         </div>
 
+        {/* OCULTO TEMPORARIAMENTE - Anor Commerce LLC
         <div className="mt-10 pt-6 border-t border-gray-200">
           <p className="text-gray-500 text-sm">
             <strong>Titanchef</strong> é uma marca operada por Anor Commerce LLC.
@@ -51,6 +52,7 @@ export default function ContatoPage() {
             Endereço: 1209 Mountain Road Place Northeast, Albuquerque, New Mexico, 87110, USA.
           </p>
         </div>
+        */}
       </div>
     </div>
   )

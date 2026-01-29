@@ -22,9 +22,10 @@ export default function EnvioEntregaPage() {
           <h1 className="text-3xl font-bold text-gray-900 mb-6">Política de Envio e Entrega</h1>
 
           <p>
-            A <strong>Titanchef</strong> (operada pela Anor Commerce LLC) trabalha para que você receba seu produto de
+            A <strong>Titanchef</strong> trabalha para que você receba seu produto de
             forma rápida e segura.
           </p>
+          {/* OCULTO TEMPORARIAMENTE - Anor Commerce LLC: (operada pela Anor Commerce LLC) */}
 
           <h3 className="text-xl font-bold text-gray-900 mt-4">1. Prazo de Processamento</h3>
           <p>
