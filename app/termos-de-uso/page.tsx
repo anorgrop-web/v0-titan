@@ -22,9 +22,12 @@ export default function TermosPage() {
           <h1 className="text-3xl font-bold text-gray-900 mb-6">Termos de Uso e Política de Envio</h1>
 
           <p>
+            Este site é operado pela <strong>Titanchef</strong>.
+          </p>
+          {/* OCULTO TEMPORARIAMENTE - Anor Commerce LLC: 
             Este site é operado pela <strong>Anor Commerce LLC</strong>, sediada em: 1209 Mountain Road Place Northeast,
             Albuquerque, New Mexico, 87110, USA.
-          </p>
+          */}
 
           <h3 className="text-xl font-bold text-gray-900 mt-4">1. Política de Envio (Estoque Nacional)</h3>
           <p>

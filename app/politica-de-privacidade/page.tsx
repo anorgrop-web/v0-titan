@@ -21,7 +21,8 @@ export default function PrivacidadePage() {
         <div className="bg-white rounded-2xl p-8 shadow-sm text-gray-700 space-y-6">
           <h1 className="text-3xl font-bold text-gray-900 mb-6">Política de Privacidade</h1>
 
-          <p>A Anor Commerce LLC respeita sua privacidade.</p>
+          <p>A Titanchef respeita sua privacidade.</p>
+          {/* OCULTO TEMPORARIAMENTE - Anor Commerce LLC: A Anor Commerce LLC respeita sua privacidade. */}
 
           <h3 className="text-xl font-bold text-gray-900 mt-4">1. Uso das Informações</h3>
           <p>Utilizamos seus dados (Nome, CPF, Endereço, Telefone) exclusivamente para:</p>

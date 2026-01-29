@@ -129,10 +129,12 @@ export default function Footer() {
           {/* Copyright and Payment Methods */}
           <div className="border-t border-gray-800 pt-8">
             <div className="text-center mb-6">
+              {/* OCULTO TEMPORARIAMENTE - Anor Commerce LLC
               <p className="hidden md:block text-gray-400 text-sm mb-2">
                 Titanchef é uma marca operada por Anor Commerce LLC. Endereço: 1209 Mountain Road Place Northeast,
                 Albuquerque, New Mexico, 87110, USA.
               </p>
+              */}
               <p className="text-gray-400 text-sm mb-4">© 2025 Titanchef | Todos os direitos reservados</p>
               <div className="flex justify-center items-center gap-4 flex-wrap">
                 <img
