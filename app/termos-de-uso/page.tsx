@@ -22,12 +22,8 @@ export default function TermosPage() {
           <h1 className="text-3xl font-bold text-gray-900 mb-6">Termos de Uso e Política de Envio</h1>
 
           <p>
-            Este site é operado pela <strong>Titanchef</strong>.
+            Este site é operado pela <strong>Anor Commerce LLC</strong>, empresa registrada no estado do Novo México, EUA (EIN: 30-1462603), sob a marca comercial <strong>Titanchef</strong>.
           </p>
-          {/* OCULTO TEMPORARIAMENTE - Anor Commerce LLC: 
-            Este site é operado pela <strong>Anor Commerce LLC</strong>, sediada em: 1209 Mountain Road Place Northeast,
-            Albuquerque, New Mexico, 87110, USA.
-          */}
 
           <h3 className="text-xl font-bold text-gray-900 mt-4">1. Política de Envio (Estoque Nacional)</h3>
           <p>
@@ -50,7 +46,25 @@ export default function TermosPage() {
             <li>E-mail: info@titanchefcut.com</li>
           </ul>
 
-          <h3 className="text-xl font-bold text-gray-900 mt-4">3. Legislação Aplicável</h3>
+          <h3 className="text-xl font-bold text-gray-900 mt-4">3. Política de Reembolso e Trocas</h3>
+          <ul className="list-disc pl-5">
+            <li>Oferecemos garantia de reembolso integral de até 90 dias após a data de entrega do produto.</li>
+            <li>Para solicitar reembolso ou troca, o cliente deve entrar em contato pelo e-mail info@titanchefcut.com informando o número do pedido e o motivo da solicitação.</li>
+            <li>O reembolso será processado pelo mesmo método de pagamento utilizado na compra, em até 7 dias úteis após a aprovação da solicitação.</li>
+            <li>Em caso de produto com defeito ou danificado no transporte, o cliente poderá optar entre reembolso integral ou envio de um novo produto sem custo adicional.</li>
+            <li>Os custos de envio para devolução são por conta da empresa.</li>
+          </ul>
+
+          <h3 className="text-xl font-bold text-gray-900 mt-4">4. Política de Privacidade</h3>
+          <ul className="list-disc pl-5">
+            <li>A Anor Commerce LLC coleta apenas os dados necessários para processamento e entrega do pedido: nome, endereço, e-mail, telefone e dados de pagamento.</li>
+            <li>Os dados de pagamento são processados diretamente pelo nosso processador de pagamentos e não são armazenados em nossos servidores.</li>
+            <li>Não compartilhamos dados pessoais com terceiros, exceto quando necessário para a entrega do pedido (transportadoras) ou por exigência legal.</li>
+            <li>O cliente pode solicitar a exclusão de seus dados a qualquer momento pelo e-mail info@titanchefcut.com.</li>
+            <li>Este site utiliza cookies para melhorar a experiência de navegação e para fins analíticos.</li>
+          </ul>
+
+          <h3 className="text-xl font-bold text-gray-900 mt-4">5. Legislação Aplicável</h3>
           <p>
             Embora a operação logística seja local, estes Termos são regidos pelas leis do Estado do Novo México (EUA),
             respeitando-se as leis de proteção ao consumidor do território onde o serviço é prestado (Brasil).
