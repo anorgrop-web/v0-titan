@@ -22,10 +22,9 @@ export default function TrocasPage() {
           <h1 className="text-3xl font-bold text-gray-900 mb-6">Política de Trocas, Devoluções e Reembolso</h1>
 
           <p>
-            A <strong>Titanchef</strong> preza pela qualidade de seus produtos de
+            A <strong>Titanchef</strong> (operada pela Anor Commerce LLC) preza pela qualidade de seus produtos de
             titânio e pela satisfação total de seus clientes.
           </p>
-          {/* OCULTO TEMPORARIAMENTE - Anor Commerce LLC: (operada pela Anor Commerce LLC) */}
 
           <h3 className="text-xl font-bold text-gray-900 mt-4">1. Garantia de 90 Dias</h3>
           <p>
