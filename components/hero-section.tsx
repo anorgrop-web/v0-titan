@@ -73,7 +73,8 @@ export default function HeroSection({ isModalOpen, setIsModalOpen }: HeroSection
   }
 
   const handleOpenModal = () => {
-    setIsModalOpen(true)
+    // DESATIVADO TEMPORARIAMENTE - Modal de ofertas
+    // setIsModalOpen(true)
   }
 
   return (
