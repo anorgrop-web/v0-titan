@@ -1,0 +1,45 @@
+============================================================
+  MIGRACAO DAS MIDIAS: Vercel Blob  ->  Cloudflare R2
+============================================================
+
+O que este script faz:
+  - Baixa os 25 arquivos (imagens, gifs e videos) que hoje estao
+    no Vercel Blob.
+  - Sobe cada um pro seu bucket R2 "anor", na pasta "Tabua/",
+    com o nome IDENTICO ao que o codigo usa.
+  - NAO apaga nada do Blob. E so uma copia. Seguro.
+
+------------------------------------------------------------
+  PASSO 1 - Criar o token do R2 (so 1 vez)
+------------------------------------------------------------
+  Eu te guio nessa parte pelo navegador. O token gera duas
+  chaves: "Access Key ID" e "Secret Access Key".
+
+------------------------------------------------------------
+  PASSO 2 - Colar as chaves no arquivo .env
+------------------------------------------------------------
+  Abra o arquivo  .env  (nesta mesma pasta) e troque:
+     cole_aqui_o_access_key_id      -> pelo Access Key ID
+     cole_aqui_o_secret_access_key  -> pelo Secret Access Key
+  Salve o arquivo.
+
+------------------------------------------------------------
+  PASSO 3 - Rodar o script
+------------------------------------------------------------
+  Abra um terminal NESTA pasta (_migracao) e rode, em ordem:
+
+     npm install
+     node --env-file=.env migrar.mjs
+
+  Vai aparecer o progresso de cada arquivo (OK / FALHOU) e,
+  no fim, um resumo.
+
+------------------------------------------------------------
+  PASSO 4 - Me avisar
+------------------------------------------------------------
+  Me mande o resumo final que apareceu no terminal. Eu confiro
+  se os 25 subiram e ai troco os enderecos no codigo do site.
+
+  Depois que tudo estiver funcionando, esta pasta _migracao
+  pode ser apagada - ela e so uma ferramenta temporaria.
+============================================================

@@ -1,0 +1,13 @@
+{
+  "name": "migracao-blob-r2",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Script temporario para migrar as midias do Vercel Blob para o Cloudflare R2",
+  "scripts": {
+    "migrar": "node --env-file=.env migrar.mjs"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.0.0"
+  }
+}
