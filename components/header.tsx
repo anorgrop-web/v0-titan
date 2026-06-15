@@ -86,8 +86,8 @@ export default function Header() {
             {/* Logo */}
             <div className="flex items-center">
               <span className="text-2xl font-bold">
-                <span className="text-black">KATU</span>
-                <span className="text-red-600">CHEF</span>
+                <span className="text-black">TITANUS</span>{" "}
+                <span className="text-red-600">CUT®</span>
               </span>
             </div>
 

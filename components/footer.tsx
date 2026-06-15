@@ -61,11 +61,11 @@ export default function Footer() {
           {/* Logo and Description */}
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-6">
-              KATU<span className="text-red-500">CHEF</span>
+              TITANUS<span className="text-red-500"> CUT®</span>
             </h2>
             <p className="text-gray-300 max-w-2xl mx-auto leading-relaxed">
-              A tábua de corte Katuchef oferece uma superfície atóxica, higiênica e adequada para facas em todas as
-              refeições. Esqueça bactérias, manchas e trocas constantes – a Katuchef mantém sua cozinha mais limpa,
+              A tábua de corte Titanus Cut® oferece uma superfície atóxica, higiênica e adequada para facas em todas as
+              refeições. Esqueça bactérias, manchas e trocas constantes – a Titanus Cut® mantém sua cozinha mais limpa,
               segura e pronta para tudo, desde jantares diários até aventuras de acampamento.
             </p>
           </div>
@@ -121,7 +121,7 @@ export default function Footer() {
           {/* Copyright and Payment Methods */}
           <div className="border-t border-gray-800 pt-8">
             <div className="text-center mb-6">
-              <p className="text-gray-400 text-sm mb-4">© 2025 Katuchef | Todos os direitos reservados</p>
+              <p className="text-gray-400 text-sm mb-4">© 2025 Titanus Cut® | Todos os direitos reservados</p>
               <div className="flex justify-center items-center gap-4 flex-wrap">
                 <img src="/paypal-logo.png" alt="PayPal" className="h-6" />
                 <img src="/visa-logo-generic.png" alt="Visa" className="h-6" />

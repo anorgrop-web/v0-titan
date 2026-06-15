@@ -13,7 +13,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "KATUCHEF - Tábua de Corte de Titânio Premium",
+  title: "TITANUS CUT® - Tábua de Corte de Titânio Premium",
   description:
     "A tábua de corte de titânio número 1 da América. Durabilidade excepcional, higiene superior e design elegante.",
   generator: "v0.app",

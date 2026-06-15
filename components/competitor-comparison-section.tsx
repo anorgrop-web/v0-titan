@@ -41,13 +41,13 @@ export default function CompetitorComparisonSection() {
   }, [])
 
   const comparisonItems = [
-    { feature: "Propriedades antibacterianas", katuchef: true, competitor: false },
-    { feature: "Livre de BPA e toxinas", katuchef: true, competitor: false },
-    { feature: "Pode ser lavado na máquina de lavar louça", katuchef: true, competitor: false },
-    { feature: "Resistente a odores e manchas", katuchef: true, competitor: false },
-    { feature: "Design amigável à faca", katuchef: true, competitor: true },
-    { feature: "Durável para toda a vida", katuchef: true, competitor: false },
-    { feature: "Dupla face", katuchef: true, competitor: true },
+    { feature: "Propriedades antibacterianas", titanus: true, competitor: false },
+    { feature: "Livre de BPA e toxinas", titanus: true, competitor: false },
+    { feature: "Pode ser lavado na máquina de lavar louça", titanus: true, competitor: false },
+    { feature: "Resistente a odores e manchas", titanus: true, competitor: false },
+    { feature: "Design amigável à faca", titanus: true, competitor: true },
+    { feature: "Durável para toda a vida", titanus: true, competitor: false },
+    { feature: "Dupla face", titanus: true, competitor: true },
   ]
 
   return (
@@ -75,7 +75,7 @@ export default function CompetitorComparisonSection() {
           <div className="w-16 h-1 bg-gray-400 mx-auto mb-8"></div>
           <p className="text-gray-600 max-w-4xl mx-auto leading-relaxed">
             Quando se trata de saúde, segurança e durabilidade, nenhuma tábua de corte se compara. Tábuas de madeira e
-            plástico abrigam bactérias, liberam toxinas e se desgastam rapidamente – a Katuchef revoluciona o mercado
+            plástico abrigam bactérias, liberam toxinas e se desgastam rapidamente – a Titanus Cut® revoluciona o mercado
             com sua superfície estéril e resistente.
           </p>
         </div>
@@ -94,7 +94,7 @@ export default function CompetitorComparisonSection() {
               <div className="flex-shrink-0">
                 <Image
                   src="/titanium-cutting-board-clean-modern.png"
-                  alt="Tábua de corte de titânio Katuchef"
+                  alt="Tábua de corte de titânio Titanus Cut®"
                   width={150}
                   height={120}
                   className="rounded-lg sm:w-[200px] sm:h-[150px]"
@@ -126,7 +126,7 @@ export default function CompetitorComparisonSection() {
                 <span className="font-medium text-gray-900">Características</span>
               </div>
               <div className="bg-gray-50 p-4 border-b border-l border-gray-200 text-center">
-                <span className="font-medium text-gray-900">Katuchef</span>
+                <span className="font-medium text-gray-900">Titanus Cut®</span>
               </div>
               <div className="bg-gray-50 p-4 border-b border-l border-gray-200 text-center">
                 <span className="font-medium text-gray-900">Concorrência</span>
@@ -141,7 +141,7 @@ export default function CompetitorComparisonSection() {
                   <div
                     className={`p-4 border-b border-l border-gray-200 flex justify-center ${index % 2 === 1 ? "bg-gray-50" : "bg-white"}`}
                   >
-                    {item.katuchef ? <CheckIcon /> : <XIcon />}
+                    {item.titanus ? <CheckIcon /> : <XIcon />}
                   </div>
                   <div
                     className={`p-4 border-b border-l border-gray-200 flex justify-center ${index % 2 === 1 ? "bg-gray-50" : "bg-white"}`}

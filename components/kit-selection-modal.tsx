@@ -18,6 +18,7 @@ export default function KitSelectionModal({ isOpen, onClose }: KitSelectionModal
       id: 1,
       title: "Tamanho pequeno 25cmx15cm",
       price: "R$59,90",
+      // TODO rebrand: trocar domínio de checkout katucheftitanio.com pelo novo domínio Titanus Cut® quando disponível
       link: "https://seguro.katucheftitanio.com/r/VO2k11vZ10fp147z",
       image:
         "https://anorcorp.com/Tabua/ChatGPT%20Image%2027%20de%20ago.%20de%202025%2C%2010_50_13.png",
@@ -26,6 +27,7 @@ export default function KitSelectionModal({ isOpen, onClose }: KitSelectionModal
       id: 2,
       title: "Tamanho médio 30cmx20cm",
       price: "R$69,90",
+      // TODO rebrand: trocar domínio de checkout katucheftitanio.com pelo novo domínio Titanus Cut® quando disponível
       link: "https://seguro.katucheftitanio.com/r/n1B1oF1N9a012ZAYq47",
       image:
         "https://anorcorp.com/Tabua/ChatGPT%20Image%2027%20de%20ago.%20de%202025%2C%2011_01_50.png",
@@ -34,6 +36,7 @@ export default function KitSelectionModal({ isOpen, onClose }: KitSelectionModal
       id: 3,
       title: "Tamanho grande 34cmx34cm",
       price: "R$79,90",
+      // TODO rebrand: trocar domínio de checkout katucheftitanio.com pelo novo domínio Titanus Cut® quando disponível
       link: "https://seguro.katucheftitanio.com/r/1E711Yxh24B403jQ",
       image:
         "https://anorcorp.com/Tabua/ChatGPT%20Image%2027%20de%20ago.%20de%202025%2C%2011_04_04.png",
@@ -43,6 +46,7 @@ export default function KitSelectionModal({ isOpen, onClose }: KitSelectionModal
       title: "Kit com 3 tamanhos",
       price: "de R$299,67 POR R$89,87",
       discount: "70%OFF",
+      // TODO rebrand: trocar domínio de checkout katucheftitanio.com pelo novo domínio Titanus Cut® quando disponível
       link: "https://seguro.katucheftitanio.com/r/1AM0YhejI4r1F61T27j",
       image: "https://anorcorp.com/Tabua/Kit%20de%20T%C3%A1buas%20de%20Corte.png",
     },
@@ -64,7 +68,7 @@ export default function KitSelectionModal({ isOpen, onClose }: KitSelectionModal
         <div className="flex items-center justify-between p-6 border-b">
           <div className="flex-1 text-center">
             <h2 className="text-2xl font-bold text-gray-900">Escolha o kit de sua preferência</h2>
-            <p className="text-gray-600 mt-1">Garanta uma, duas ou três tábuas KATUCHEF, em tamanhos diferentes.</p>
+            <p className="text-gray-600 mt-1">Garanta uma, duas ou três tábuas TITANUS CUT®, em tamanhos diferentes.</p>
           </div>
           <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full transition-colors ml-4">
             <X className="h-6 w-6" />

@@ -28,7 +28,7 @@ export default function InvestmentSection() {
       ),
       title: "Construção amigável para facas",
       description:
-        "A superfície da tábua de corte Katuchef foi especialmente projetada para ser delicada com suas facas. Ela ajuda a manter suas lâminas afiadas por mais tempo, evitando que você precise afiá-las com tanta frequência.",
+        "A superfície da tábua de corte Titanus Cut® foi especialmente projetada para ser delicada com suas facas. Ela ajuda a manter suas lâminas afiadas por mais tempo, evitando que você precise afiá-las com tanta frequência.",
     },
     {
       icon: (
@@ -42,7 +42,7 @@ export default function InvestmentSection() {
       ),
       title: "Resistência a riscos e durabilidade",
       description:
-        "O Katuchef foi projetado para suportar o uso diário sem apresentar sinais de desgaste. Ele resiste a arranhões, amassados e deformações, e permanece em ótimas condições, independentemente de quanto você o prepare. Durará a vida toda.",
+        "O Titanus Cut® foi projetado para suportar o uso diário sem apresentar sinais de desgaste. Ele resiste a arranhões, amassados e deformações, e permanece em ótimas condições, independentemente de quanto você o prepare. Durará a vida toda.",
     },
     {
       icon: (
@@ -56,7 +56,7 @@ export default function InvestmentSection() {
       ),
       title: "Versatilidade Dupla Face",
       description:
-        "O design duplo do Katuchef permite que você mantenha alimentos crus e cozidos separados, tornando o preparo das refeições mais seguro e fácil. É uma maneira simples de evitar contaminação cruzada e economizar tempo na cozinha.",
+        "O design duplo do Titanus Cut® permite que você mantenha alimentos crus e cozidos separados, tornando o preparo das refeições mais seguro e fácil. É uma maneira simples de evitar contaminação cruzada e economizar tempo na cozinha.",
     },
   ]
 
@@ -71,8 +71,8 @@ export default function InvestmentSection() {
           <p className="text-lg text-gray-600 mb-6">Esta tábua de corte de titânio cuida de tudo na sua cozinha</p>
           <div className="w-16 h-1 bg-gray-400 mx-auto mb-8"></div>
           <p className="text-gray-700 max-w-4xl mx-auto leading-relaxed">
-            As tábuas de corte Katuchef são projetadas para oferecer a você a mais alta qualidade no preparo de
-            alimentos. Com recursos que priorizam segurança, praticidade e durabilidade, a Katuchef torna cada refeição
+            As tábuas de corte Titanus Cut® são projetadas para oferecer a você a mais alta qualidade no preparo de
+            alimentos. Com recursos que priorizam segurança, praticidade e durabilidade, a Titanus Cut® torna cada refeição
             mais saudável, segura e prazerosa de preparar.
           </p>
         </div>

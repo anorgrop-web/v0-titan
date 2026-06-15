@@ -17,7 +17,7 @@ const ReviewsSection = () => {
       recommended: true,
       title: "Ótimo para chefs do dia a dia",
       content:
-        "Cozinho todos os dias, e o Katuchef foi a melhor atualização para a nossa cozinha. É leve, fácil de limpar e adoro que não deforme nem manche como minhas antigas tábuas de plástico/madeira.",
+        "Cozinho todos os dias, e o Titanus Cut® foi a melhor atualização para a nossa cozinha. É leve, fácil de limpar e adoro que não deforme nem manche como minhas antigas tábuas de plástico/madeira.",
       
       helpful: 24,
       notHelpful: 0,
@@ -61,7 +61,7 @@ const ReviewsSection = () => {
       recommended: true,
       title: "Cozinha mais limpa e segura",
       content:
-        "Depois de aprender a quantidade de bactérias que as tábuas de plástico podem reter, mudei para Katuchef. Me sinto muito melhor sabendo que estou preparando comida em uma superfície higiênica. Além disso, é muito fácil lavar as ranhuras da escova por horas.",
+        "Depois de aprender a quantidade de bactérias que as tábuas de plástico podem reter, mudei para Titanus Cut®. Me sinto muito melhor sabendo que estou preparando comida em uma superfície higiênica. Além disso, é muito fácil lavar as ranhuras da escova por horas.",
       helpful: 14,
       notHelpful: 0,
     },
@@ -89,7 +89,7 @@ const ReviewsSection = () => {
       recommended: true,
       title: "Vai durar a vida toda",
       content:
-        "Já usei muitas tábuas de corte ao longo dos anos, mas a Katuchef é única, sério. Ela é praticamente indestrutível, e adoro saber que não terei que substituí-la tão cedo.",
+        "Já usei muitas tábuas de corte ao longo dos anos, mas a Titanus Cut® é única, sério. Ela é praticamente indestrutível, e adoro saber que não terei que substituí-la tão cedo.",
       helpful: 12,
       notHelpful: 0,
     },
@@ -103,7 +103,7 @@ const ReviewsSection = () => {
       recommended: true,
       title: "Incrível para cozinhas movimentadas",
       content:
-        "Tenho um pequeno negócio de buffet, e o Katuchef tem sido perfeito para manter tudo limpo e eficiente. Não mancha, não cheira e é resistente o suficiente para suportar o uso constante. Nota 10/10.",
+        "Tenho um pequeno negócio de buffet, e o Titanus Cut® tem sido perfeito para manter tudo limpo e eficiente. Não mancha, não cheira e é resistente o suficiente para suportar o uso constante. Nota 10/10.",
       helpful: 7,
       notHelpful: 0,
     },
@@ -117,7 +117,7 @@ const ReviewsSection = () => {
       recommended: true,
       title: "Ferramenta excelente e acessível",
       content:
-        "É lindo, funcional e deixa minha cozinha com um toque muito mais sofisticado. Não imaginei que uma tábua de corte pudesse ficar tão bonita, mas Katuchef me provou o contrário, haha.",
+        "É lindo, funcional e deixa minha cozinha com um toque muito mais sofisticado. Não imaginei que uma tábua de corte pudesse ficar tão bonita, mas Titanus Cut® me provou o contrário, haha.",
       helpful: 9,
       notHelpful: 0,
     },
@@ -164,10 +164,10 @@ const ReviewsSection = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Milhares de usuários felizes do Katuchef
+            Milhares de usuários felizes do Titanus Cut®
           </h2>
           <p className="text-lg text-gray-600 mb-6">
-            Leia as avaliações de clientes satisfeitos da Katuchef ao redor do mundo!
+            Leia as avaliações de clientes satisfeitos da Titanus Cut® ao redor do mundo!
           </p>
           <div className="w-16 h-1 bg-gray-400 mx-auto mb-12"></div>
         </div>

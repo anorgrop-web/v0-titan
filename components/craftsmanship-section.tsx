@@ -10,7 +10,7 @@ export default function CraftsmanshipSection() {
             Artesanato em titânio puro para uma cozinha mais limpa e segura
           </h2>
           <p className="text-gray-600 text-lg mb-6 max-w-3xl mx-auto">
-            Transforme a preparação das suas refeições com a tábua de corte higiênica e durável da Katuchef
+            Transforme a preparação das suas refeições com a tábua de corte higiênica e durável da Titanus Cut®
           </p>
           <div className="w-16 h-1 bg-gray-400 mx-auto"></div>
         </div>
@@ -24,8 +24,8 @@ export default function CraftsmanshipSection() {
               </h3>
               <div className="w-12 h-1 bg-gray-400 mb-6"></div>
               <p className="text-gray-600 text-lg leading-relaxed">
-                A superfície antibacteriana do Katuchef mantém sua cozinha mais limpa e segura, impedindo o acúmulo de
-                bactérias. Feito de titânio atóxico, o Katuchef é livre de produtos químicos nocivos e garante um
+                A superfície antibacteriana do Titanus Cut® mantém sua cozinha mais limpa e segura, impedindo o acúmulo de
+                bactérias. Feito de titânio atóxico, o Titanus Cut® é livre de produtos químicos nocivos e garante um
                 preparo de refeições mais seguro para você e sua família.
               </p>
             </div>
@@ -63,7 +63,7 @@ export default function CraftsmanshipSection() {
               </h3>
               <div className="w-12 h-1 bg-gray-400 mb-6"></div>
               <p className="text-gray-600 text-lg leading-relaxed">
-                Seja para cortar, trinchar ou servir, o Katuchef faz tudo. O design com dupla face permite separar
+                Seja para cortar, trinchar ou servir, o Titanus Cut® faz tudo. O design com dupla face permite separar
                 alimentos crus e cozidos, para que você possa preparar cada prato com cuidado.
               </p>
             </div>
@@ -77,8 +77,8 @@ export default function CraftsmanshipSection() {
               <h3 className="text-2xl md:text-3xl font-bold text-black mb-4">Titânio cortado a laser</h3>
               <div className="w-12 h-1 bg-gray-400 mb-6"></div>
               <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                Suas facas vão adorar Katuchef tanto quanto você. Ao contrário das tábuas de vidro, que perdem o fio
-                rapidamente, a superfície da Katuchef é amiga das facas, preservando o fio e prolongando a vida útil dos
+                Suas facas vão adorar Titanus Cut® tanto quanto você. Ao contrário das tábuas de vidro, que perdem o fio
+                rapidamente, a superfície da Titanus Cut® é amiga das facas, preservando o fio e prolongando a vida útil dos
                 seus utensílios de cozinha.
               </p>
 
@@ -98,7 +98,7 @@ export default function CraftsmanshipSection() {
                     <h4 className="font-semibold text-black mb-1">Versátil para qualquer ocasião</h4>
                     <p className="text-gray-600">
                       Seja para fatiar vegetais, cortar carnes ou preparar refeições ao ar livre, o design leve e
-                      resistente ao calor do Katuchef oferece a superfície perfeita.
+                      resistente ao calor do Titanus Cut® oferece a superfície perfeita.
                     </p>
                   </div>
                 </div>
@@ -116,7 +116,7 @@ export default function CraftsmanshipSection() {
                   <div>
                     <h4 className="font-semibold text-black mb-1">Construído para durar</h4>
                     <p className="text-gray-600">
-                      Feito de titânio puro, o Katuchef resiste a arranhões, deformações e desgaste, proporcionando uma
+                      Feito de titânio puro, o Titanus Cut® resiste a arranhões, deformações e desgaste, proporcionando uma
                       vida inteira de uso confiável.
                     </p>
                   </div>
@@ -135,7 +135,7 @@ export default function CraftsmanshipSection() {
                   <div>
                     <h4 className="font-semibold text-black mb-1">Não requer manutenção</h4>
                     <p className="text-gray-600">
-                      Katuchef é resistente a manchas, odores e arranhões. Basta uma lavagem rápida para mantê-lo limpo
+                      Titanus Cut® é resistente a manchas, odores e arranhões. Basta uma lavagem rápida para mantê-lo limpo
                       – sem necessidade de óleo ou limpeza profunda.
                     </p>
                   </div>

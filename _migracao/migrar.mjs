@@ -32,6 +32,7 @@ const PATHS = [
   "Tabua/ChatGPT%20Image%2027%20de%20ago.%20de%202025%2C%2010_50_13.png",
   "Tabua/ChatGPT%20Image%2027%20de%20ago.%20de%202025%2C%2011_01_50.png",
   "Tabua/ChatGPT%20Image%2027%20de%20ago.%20de%202025%2C%2011_04_04.png",
+  // TODO rebrand: substituir os arquivos de vídeo "Depoimento katuchef N.mp4" pelas versões Titanus Cut® quando disponíveis
   "Tabua/Depoimento%20katuchef%201.mp4",
   "Tabua/Depoimento%20katuchef%202.mp4",
   "Tabua/Group%201058.png",
@@ -40,6 +41,7 @@ const PATHS = [
   "Tabua/MV9MaXNhLmpwZw-w_120-h_120-fit_crop.jpg",
   "Tabua/Ml9BbWFuZGEtVi5qcGc-w_120-h_120-fit_crop.jpg",
   "Tabua/Q2hyaXN0aWUtSy5qcGc-w_120-h_120-fit_crop.jpg",
+  // TODO rebrand: substituir o arquivo de vídeo "depoimento katuchef 3.mp4" pela versão Titanus Cut® quando disponível
   "Tabua/depoimento%20katuchef%203.mp4",
   "Tabua/download%20%281%29.jpg",
   "Tabua/image%20813.png",

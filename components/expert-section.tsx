@@ -30,7 +30,7 @@ export default function ExpertSection() {
               </div>
 
               <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-2">
-                Katuchef foi classificada como a melhor tábua de corte de titânio de 2025
+                Titanus Cut® foi classificada como a melhor tábua de corte de titânio de 2025
               </h3>
 
               <p className="text-gray-600">- TopRatings.Review</p>
@@ -40,7 +40,7 @@ export default function ExpertSection() {
             <div className="hidden lg:block flex-shrink-0">
               <Image
                 src="/titanium-cutting-board-clean-modern.png"
-                alt="Tábua de corte Katuchef"
+                alt="Tábua de corte Titanus Cut®"
                 width={120}
                 height={80}
                 className="object-contain"
@@ -55,15 +55,15 @@ export default function ExpertSection() {
           <div className="flex-1 order-2 lg:order-1">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">Conheça nosso especialista,</h2>
 
-            <p className="text-lg text-gray-600 mb-8">Coach Culinário e Fundador da Katuchef</p>
+            <p className="text-lg text-gray-600 mb-8">Coach Culinário e Fundador da Titanus Cut®</p>
 
             <div className="text-gray-700 leading-relaxed mb-8">
               <p>
                 Com duas décadas de experiência como master chef da culinária japonesa, sei a importância da precisão e
                 da limpeza em cada refeição. Uma faca cega ou uma superfície anti-higiênica podem arruinar não apenas o
                 prato, mas toda a experiência. Tábuas de corte tradicionais simplesmente não atendem aos meus padrões.
-                Motivado pelo meu compromisso com a qualidade, criei a tábua de corte Katuchef. Feita de titânio puro, a
-                Katuchef é antibacteriana, não danifica facas e foi projetada para durar a vida toda, seja cozinhando em
+                Motivado pelo meu compromisso com a qualidade, criei a tábua de corte Titanus Cut®. Feita de titânio puro, a
+                Titanus Cut® é antibacteriana, não danifica facas e foi projetada para durar a vida toda, seja cozinhando em
                 casa ou em uma cozinha profissional.
               </p>
             </div>
@@ -100,7 +100,7 @@ export default function ExpertSection() {
             <div className="w-80 h-96 lg:w-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-xl">
               <Image
                 src="/images/design-mode/RXhwZXJ0LTUuanBn.jpg"
-                alt="Mason Carter - Chef e Fundador da Katuchef"
+                alt="Mason Carter - Chef e Fundador da Titanus Cut®"
                 width={384}
                 height={500}
                 className="w-full h-full object-cover"

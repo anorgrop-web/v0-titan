@@ -8,18 +8,21 @@ export default function TestimonialsSection() {
   const testimonials = [
     {
       name: "Sara",
+      // TODO rebrand: substituir vídeo de depoimento (arquivo "Depoimento katuchef 1.mp4") pela versão Titanus Cut® quando disponível
       video: "https://anorcorp.com/Tabua/Depoimento%20katuchef%201.mp4",
       rating: 5,
       text: "Adoro esta tábua de corte! É muito mais fácil de limpar do que a minha antiga tábua de madeira – chega de esfregar comida para tirar marcas de faca. Depois de 6 meses de uso intenso, ela ainda parece novinha em folha. Me sinto muito melhor sabendo que estou preparando um churrasco em uma superfície atóxica e antibacteriana!",
     },
     {
       name: "Olívia",
+      // TODO rebrand: substituir vídeo de depoimento (arquivo "Depoimento katuchef 2.mp4") pela versão Titanus Cut® quando disponível
       video: "https://anorcorp.com/Tabua/Depoimento%20katuchef%202.mp4",
       rating: 5,
-      text: "Eu tinha pavor de cortar legumes porque minhas facas ficavam cegas muito rápido nas minhas tábuas antigas. Com a tábua de corte Katuchef, minhas facas ficam afiadas e eu não preciso ficar pegando o amolador. Você SIMPLESMENTE TEM que ter isso.",
+      text: "Eu tinha pavor de cortar legumes porque minhas facas ficavam cegas muito rápido nas minhas tábuas antigas. Com a tábua de corte Titanus Cut®, minhas facas ficam afiadas e eu não preciso ficar pegando o amolador. Você SIMPLESMENTE TEM que ter isso.",
     },
     {
       name: "Luciano",
+      // TODO rebrand: substituir vídeo de depoimento (arquivo "depoimento katuchef 3.mp4") pela versão Titanus Cut® quando disponível
       video: "https://anorcorp.com/Tabua/depoimento%20katuchef%203.mp4",
       rating: 5,
       text: '"Troque a famosa tabua de madeira por essa de titanio. Realmente bem melhor, muito mais apresentável, muito mais higiênico, facil de limpar. Deixei as de madeira só de enfeite mesmo"',
@@ -49,11 +52,11 @@ export default function TestimonialsSection() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">Satisfação garantida com Katuchef</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">Satisfação garantida com Titanus Cut®</h2>
           <p className="text-gray-600 text-lg mb-6">Redefina sua experiência na cozinha</p>
           <div className="w-16 h-1 bg-gray-400 mx-auto mb-8"></div>
           <p className="text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Milhares de clientes satisfeitos confiam na Katuchef por sua durabilidade e segurança. Esqueça as tábuas de
+            Milhares de clientes satisfeitos confiam na Titanus Cut® por sua durabilidade e segurança. Esqueça as tábuas de
             corte propensas a bactérias e as trocas constantes. Com esta tábua de corte de titânio de alta qualidade,
             você pode preparar refeições com confiança, sabendo que tem uma tábua de corte mais limpa e durável.
           </p>
