@@ -17,6 +17,11 @@ export const metadata: Metadata = {
   description:
     "A tábua de corte de titânio número 1 da América. Durabilidade excepcional, higiene superior e design elegante.",
   generator: "v0.app",
+  verification: {
+    other: {
+      "facebook-domain-verification": "xkax1aych6klab7879mbq6migrd7lt",
+    },
+  },
 }
 
 export default function RootLayout({
