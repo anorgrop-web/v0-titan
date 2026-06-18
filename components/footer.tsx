@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { ChevronDown, Mail, MessageCircle, Phone } from "lucide-react"
 
 export default function Footer() {
@@ -68,6 +69,7 @@ export default function Footer() {
               refeições. Esqueça bactérias, manchas e trocas constantes – a Titanus Cut® mantém sua cozinha mais limpa,
               segura e pronta para tudo, desde jantares diários até aventuras de acampamento.
             </p>
+            <p className="text-gray-400 text-sm mt-4">1209 Mountain Road Pl NE, STE R, Albuquerque, NM 87110, USA</p>
           </div>
 
           {/* Customer Service */}
@@ -76,7 +78,9 @@ export default function Footer() {
             <div className="space-y-4 max-w-md mx-auto">
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-gray-400" />
-                <span>Envie-Nos Um E-Mail</span>
+                <a href="mailto:support@titanchefcut.com" className="hover:text-gray-300 transition-colors">
+                  Envie-Nos Um E-Mail
+                </a>
               </div>
               <div className="flex items-center gap-3">
                 <MessageCircle className="w-5 h-5 text-gray-400" />
@@ -84,7 +88,9 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-gray-400" />
-                <span>+1 (209) 806-4881</span>
+                <a href="tel:+12098064881" className="hover:text-gray-300 transition-colors">
+                  +1 (209) 806-4881
+                </a>
               </div>
             </div>
           </div>
@@ -97,9 +103,15 @@ export default function Footer() {
                 <ChevronDown className="w-5 h-5" />
               </div>
               <div className="space-y-3 text-gray-300">
-                <div>Termos E Condições</div>
-                <div>Política De Privacidade</div>
-                <div>Perguntas Frequentes</div>
+                <Link href="/termos" className="block hover:text-white transition-colors">
+                  Termos E Condições
+                </Link>
+                <Link href="/privacidade" className="block hover:text-white transition-colors">
+                  Política De Privacidade
+                </Link>
+                <Link href="/#faq" className="block hover:text-white transition-colors">
+                  Perguntas Frequentes
+                </Link>
                 <div>Afiliado</div>
               </div>
             </div>
@@ -112,7 +124,9 @@ export default function Footer() {
               <div className="space-y-3 text-gray-300">
                 <div>Envio E Entrega</div>
                 <div>Devoluções E Reembolsos</div>
-                <div>Contato</div>
+                <Link href="/#contato" className="block hover:text-white transition-colors">
+                  Contato
+                </Link>
                 <div>Rastreie Seu Pedido</div>
               </div>
             </div>
@@ -121,7 +135,9 @@ export default function Footer() {
           {/* Copyright and Payment Methods */}
           <div className="border-t border-gray-800 pt-8">
             <div className="text-center mb-6">
-              <p className="text-gray-400 text-sm mb-4">© 2025 Titanus Cut® | Todos os direitos reservados</p>
+              <p className="text-gray-400 text-sm mb-4">
+                © 2025 Titanus Cut® — Operado por Anor Commerce LLC | Todos os direitos reservados
+              </p>
               <div className="flex justify-center items-center gap-4 flex-wrap">
                 <img src="/paypal-logo.png" alt="PayPal" className="h-6" />
                 <img src="/visa-logo-generic.png" alt="Visa" className="h-6" />
