@@ -5,7 +5,7 @@ import Footer from "@/components/footer"
 export const metadata: Metadata = {
   title: "Termos e Condições | Titanus Cut®",
   description:
-    "Termos e Condições de uso e compra da Anor Commerce LLC, operando como Titanus Cut®. Leia as regras aplicáveis ao uso do site e aos pedidos.",
+    "Termos e Condições de uso e compra da Earendil Commerce LLC, operando como Titanus Cut®. Leia as regras aplicáveis ao uso do site e aos pedidos.",
 }
 
 export default function TermosPage() {
@@ -16,17 +16,17 @@ export default function TermosPage() {
       <article className="max-w-3xl mx-auto px-4 py-16">
         <header className="mb-10 border-b border-gray-200 pb-6">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Termos e Condições</h1>
-          <p className="text-gray-600">Anor Commerce LLC, operando como Titanus Cut®</p>
-          <p className="text-gray-500 text-sm mt-1">Data de vigência: 18 de junho de 2026</p>
+          <p className="text-gray-600">Earendil Commerce LLC, operando como Titanus Cut®</p>
+          <p className="text-gray-500 text-sm mt-1">Data de vigência: 14 de outubro de 2026</p>
         </header>
 
         <div className="space-y-10 text-gray-700 leading-relaxed">
           <p>
             Estes Termos e Condições regem o uso do site{" "}
-            <a href="https://titanus.titanchefcut.com" className="text-gray-900 underline">
-              https://titanus.titanchefcut.com
+            <a href="https://tabua.titanchefcut.com" className="text-gray-900 underline">
+              https://tabua.titanchefcut.com
             </a>{" "}
-            e a compra de produtos da marca Titanus Cut®, operada pela Anor Commerce LLC. Ao acessar o site ou realizar
+            e a compra de produtos da marca Titanus Cut®, operada pela Earendil Commerce LLC. Ao acessar o site ou realizar
             uma compra, você concorda com os termos descritos abaixo.
           </p>
 
@@ -42,7 +42,7 @@ export default function TermosPage() {
           <section>
             <h2 className="text-xl font-semibold text-gray-900 mb-3">2. Descrição do serviço e do produto</h2>
             <p>
-              A Anor Commerce LLC comercializa a tábua de corte de titânio Titanus Cut® e produtos relacionados por meio
+              A Earendil Commerce LLC comercializa a tábua de corte de titânio Titanus Cut® e produtos relacionados por meio
               deste site. Empenhamo-nos para que as descrições, imagens e especificações dos produtos sejam precisas;
               no entanto, podem ocorrer pequenas variações de cor ou apresentação em razão das configurações de
               exibição de cada dispositivo.
@@ -64,7 +64,7 @@ export default function TermosPage() {
             <p>
               Os prazos de envio e entrega são estimativas e podem variar conforme a localidade de destino e fatores
               operacionais ou logísticos alheios ao nosso controle. Após a expedição, eventuais atrasos decorrentes da
-              transportadora ou de autoridades aduaneiras não são de responsabilidade da Anor Commerce LLC.
+              transportadora ou de autoridades aduaneiras não são de responsabilidade da Earendil Commerce LLC.
             </p>
           </section>
 
@@ -74,8 +74,8 @@ export default function TermosPage() {
               Oferecemos uma garantia de reembolso de 90 dias. Caso você não fique satisfeito com a sua compra, poderá
               solicitar a devolução dentro de 90 dias a contar da data de recebimento do produto. Para iniciar uma
               solicitação de devolução ou reembolso, entre em contato pelo e-mail{" "}
-              <a href="mailto:support@titanchefcut.com" className="text-gray-900 underline">
-                support@titanchefcut.com
+              <a href="mailto:info@titanchefcut.com" className="text-gray-900 underline">
+                info@titanchefcut.com
               </a>
               . Os reembolsos aprovados serão processados pelo mesmo método de pagamento utilizado na compra.
             </p>
@@ -85,7 +85,7 @@ export default function TermosPage() {
             <h2 className="text-xl font-semibold text-gray-900 mb-3">6. Propriedade intelectual</h2>
             <p>
               A marca Titanus Cut®, o logotipo, os textos, as imagens e demais conteúdos deste site são de propriedade
-              da Anor Commerce LLC ou de seus licenciadores e estão protegidos pelas leis de propriedade intelectual
+              da Earendil Commerce LLC ou de seus licenciadores e estão protegidos pelas leis de propriedade intelectual
               aplicáveis. É proibida a reprodução, distribuição ou utilização desses materiais sem autorização prévia e
               por escrito.
             </p>
@@ -94,7 +94,7 @@ export default function TermosPage() {
           <section>
             <h2 className="text-xl font-semibold text-gray-900 mb-3">7. Limitação de responsabilidade</h2>
             <p>
-              Na máxima extensão permitida pela lei aplicável, a Anor Commerce LLC não será responsável por quaisquer
+              Na máxima extensão permitida pela lei aplicável, a Earendil Commerce LLC não será responsável por quaisquer
               danos indiretos, incidentais ou consequenciais decorrentes do uso do site ou dos produtos. Os produtos
               devem ser utilizados conforme as instruções de uso e conservação fornecidas.
             </p>
@@ -122,12 +122,13 @@ export default function TermosPage() {
             <p>Em caso de dúvidas sobre estes Termos e Condições, entre em contato conosco:</p>
             <ul className="list-disc pl-6 space-y-2 mt-3">
               <li>
-                <strong>Anor Commerce LLC</strong>
+                <strong>Earendil Commerce LLC</strong>
               </li>
+              <li>EIN: 61-2332963</li>
               <li>1209 Mountain Road Pl NE, STE R, Albuquerque, NM 87110, Estados Unidos</li>
               <li>
-                <a href="mailto:support@titanchefcut.com" className="text-gray-900 underline">
-                  support@titanchefcut.com
+                <a href="mailto:info@titanchefcut.com" className="text-gray-900 underline">
+                  info@titanchefcut.com
                 </a>
               </li>
             </ul>

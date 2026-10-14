@@ -78,7 +78,7 @@ export default function Footer() {
             <div className="space-y-4 max-w-md mx-auto">
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-gray-400" />
-                <a href="mailto:support@titanchefcut.com" className="hover:text-gray-300 transition-colors">
+                <a href="mailto:info@titanchefcut.com" className="hover:text-gray-300 transition-colors">
                   Envie-Nos Um E-Mail
                 </a>
               </div>
@@ -136,7 +136,7 @@ export default function Footer() {
           <div className="border-t border-gray-800 pt-8">
             <div className="text-center mb-6">
               <p className="text-gray-400 text-sm mb-4">
-                © 2025 Titanus Cut® — Operado por Anor Commerce LLC | Todos os direitos reservados
+                © 2025 Titanus Cut® — Operado por Earendil Commerce LLC | Todos os direitos reservados
               </p>
               <div className="flex justify-center items-center gap-4 flex-wrap">
                 <img src="/paypal-logo.png" alt="PayPal" className="h-6" />

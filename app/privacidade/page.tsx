@@ -5,7 +5,7 @@ import Footer from "@/components/footer"
 export const metadata: Metadata = {
   title: "Política de Privacidade | Titanus Cut®",
   description:
-    "Política de Privacidade da Anor Commerce LLC, operando como Titanus Cut®. Saiba como coletamos, usamos, compartilhamos e protegemos os seus dados pessoais.",
+    "Política de Privacidade da Earendil Commerce LLC, operando como Titanus Cut®. Saiba como coletamos, usamos, compartilhamos e protegemos os seus dados pessoais.",
 }
 
 export default function PrivacidadePage() {
@@ -16,16 +16,16 @@ export default function PrivacidadePage() {
       <article className="max-w-3xl mx-auto px-4 py-16">
         <header className="mb-10 border-b border-gray-200 pb-6">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Política de Privacidade</h1>
-          <p className="text-gray-600">Anor Commerce LLC, operando como Titanus Cut®</p>
-          <p className="text-gray-500 text-sm mt-1">Data de vigência: 18 de junho de 2026</p>
+          <p className="text-gray-600">Earendil Commerce LLC, operando como Titanus Cut®</p>
+          <p className="text-gray-500 text-sm mt-1">Data de vigência: 14 de outubro de 2026</p>
         </header>
 
         <div className="space-y-10 text-gray-700 leading-relaxed">
           <p>
-            Esta Política de Privacidade descreve como a Anor Commerce LLC, operando sob a marca comercial Titanus
+            Esta Política de Privacidade descreve como a Earendil Commerce LLC, operando sob a marca comercial Titanus
             Cut®, coleta, utiliza, armazena, compartilha e protege as informações dos visitantes e clientes do site{" "}
-            <a href="https://titanus.titanchefcut.com" className="text-gray-900 underline">
-              https://titanus.titanchefcut.com
+            <a href="https://tabua.titanchefcut.com" className="text-gray-900 underline">
+              https://tabua.titanchefcut.com
             </a>
             . Ao utilizar o nosso site e os nossos serviços, você concorda com as práticas descritas neste documento.
           </p>
@@ -33,22 +33,28 @@ export default function PrivacidadePage() {
           <section>
             <h2 className="text-xl font-semibold text-gray-900 mb-3">1. Quem somos</h2>
             <p>
-              O site é operado pela Anor Commerce LLC, uma sociedade de responsabilidade limitada registrada no Estado
+              O site é operado pela Earendil Commerce LLC, uma sociedade de responsabilidade limitada registrada no Estado
               do Novo México, Estados Unidos da América, que atua comercialmente sob a marca Titanus Cut®. Quando esta
-              política menciona &ldquo;nós&rdquo;, &ldquo;nosso&rdquo; ou &ldquo;Titanus Cut®&rdquo;, refere-se à Anor
+              política menciona &ldquo;nós&rdquo;, &ldquo;nosso&rdquo; ou &ldquo;Titanus Cut®&rdquo;, refere-se à Earendil
               Commerce LLC.
             </p>
             <ul className="list-disc pl-6 space-y-2 mt-3">
               <li>
-                <strong>Razão social:</strong> Anor Commerce LLC
+                <strong>Razão social:</strong> Earendil Commerce LLC
+              </li>
+              <li>
+                <strong>EIN:</strong> 61-2332963
+              </li>
+              <li>
+                <strong>Registro no Novo México (Entity ID):</strong> 0008085321
               </li>
               <li>
                 <strong>Endereço:</strong> 1209 Mountain Road Pl NE, STE R, Albuquerque, NM 87110, Estados Unidos
               </li>
               <li>
                 <strong>E-mail:</strong>{" "}
-                <a href="mailto:support@titanchefcut.com" className="text-gray-900 underline">
-                  support@titanchefcut.com
+                <a href="mailto:info@titanchefcut.com" className="text-gray-900 underline">
+                  info@titanchefcut.com
                 </a>
               </li>
             </ul>
@@ -142,8 +148,8 @@ export default function PrivacidadePage() {
             </ul>
             <p className="mt-3">
               Para exercer qualquer um desses direitos, entre em contato pelo e-mail{" "}
-              <a href="mailto:support@titanchefcut.com" className="text-gray-900 underline">
-                support@titanchefcut.com
+              <a href="mailto:info@titanchefcut.com" className="text-gray-900 underline">
+                info@titanchefcut.com
               </a>
               .
             </p>
@@ -176,12 +182,12 @@ export default function PrivacidadePage() {
             </p>
             <ul className="list-disc pl-6 space-y-2 mt-3">
               <li>
-                <strong>Anor Commerce LLC</strong>
+                <strong>Earendil Commerce LLC</strong>
               </li>
               <li>1209 Mountain Road Pl NE, STE R, Albuquerque, NM 87110, Estados Unidos</li>
               <li>
-                <a href="mailto:support@titanchefcut.com" className="text-gray-900 underline">
-                  support@titanchefcut.com
+                <a href="mailto:info@titanchefcut.com" className="text-gray-900 underline">
+                  info@titanchefcut.com
                 </a>
               </li>
             </ul>

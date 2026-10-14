@@ -4,6 +4,8 @@ import { useState } from "react"
 import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import { KITS, KIT_ORDER } from "@/lib/pricing"
+import { brl } from "@/lib/br-format"
 
 interface KitSelectionModalProps {
   isOpen: boolean
@@ -13,46 +15,26 @@ interface KitSelectionModalProps {
 export default function KitSelectionModal({ isOpen, onClose }: KitSelectionModalProps) {
   const [selectedKit, setSelectedKit] = useState(4) // Card 4 pré-selecionado
 
-  const kits = [
-    {
-      id: 1,
-      title: "Tamanho pequeno 25cmx15cm",
-      price: "R$59,90",
-      link: "https://seguro.titanchefcut.com/r/4JCC9l3tZ880Fz1v7C33",
-      image:
-        "https://anorcorp.com/Tabua/ChatGPT%20Image%2027%20de%20ago.%20de%202025%2C%2010_50_13.png",
-    },
-    {
-      id: 2,
-      title: "Tamanho médio 30cmx20cm",
-      price: "R$69,90",
-      link: "https://seguro.titanchefcut.com/r/4e9sLec89803heJA140",
-      image:
-        "https://anorcorp.com/Tabua/ChatGPT%20Image%2027%20de%20ago.%20de%202025%2C%2011_01_50.png",
-    },
-    {
-      id: 3,
-      title: "Tamanho grande 34cmx34cm",
-      price: "R$79,90",
-      link: "https://seguro.titanchefcut.com/r/39xA1E805wHSw8Ac4Vh",
-      image:
-        "https://anorcorp.com/Tabua/ChatGPT%20Image%2027%20de%20ago.%20de%202025%2C%2011_04_04.png",
-    },
-    {
-      id: 4,
-      title: "Kit com 3 tamanhos",
-      price: "de R$299,67 POR R$89,87",
-      discount: "70%OFF",
-      link: "https://seguro.titanchefcut.com/r/30861F9iQqR4AD988D",
-      image: "https://anorcorp.com/Tabua/Kit%20de%20T%C3%A1buas%20de%20Corte.png",
-    },
-  ]
+  // Preços e kits vêm de lib/pricing.ts — a mesma fonte que o checkout usa para cobrar.
+  const kits = KIT_ORDER.map((key, index) => {
+    const kit = KITS[key]
+    return {
+      id: index + 1,
+      key,
+      title: kit.description,
+      price: kit.compareAtCents ? `de ${brl(kit.compareAtCents)} POR ${brl(kit.cents)}` : brl(kit.cents),
+      discount: kit.discountLabel,
+      image: kit.image,
+    }
+  })
 
   const handlePurchase = () => {
     const selectedKitData = kits.find((k) => k.id === selectedKit)
-    if (selectedKitData?.link) {
-      window.open(selectedKitData.link, "_blank")
-    }
+    if (!selectedKitData) return
+    // Leva as UTMs da LP junto para o checkout.
+    const params = new URLSearchParams(window.location.search)
+    params.set("kit", selectedKitData.key)
+    window.location.href = `/checkout?${params.toString()}`
   }
 
   if (!isOpen) return null
