@@ -10,6 +10,7 @@ import { deliveryEstimate } from "@/lib/delivery"
 import { COMPANY } from "@/lib/company"
 import { KITS, KIT_ORDER, KIT_PADRAO, computeOrder, isKitKey, type KitKey } from "@/lib/pricing"
 import { PURCHASE_STORAGE_KEY, captureUtms, track } from "@/lib/track"
+import { PixPanel } from "@/components/checkout/pix-panel"
 import {
   BR_STATES,
   brl,
@@ -28,7 +29,6 @@ import {
   WhopPaymentFields,
   WhopPayments,
   useWhopPay,
-  useWhopResume,
   type WhopBillingDetails,
   type WhopPayOutcome,
   type WhopServerPayment,
@@ -539,15 +539,35 @@ interface PaymentBlockProps {
   onDone: (paymentId: string, status: string) => void
 }
 
+const PIX_STORAGE_KEY = "titanus_pix_v1"
+
+function clearPendingPix() {
+  try {
+    sessionStorage.removeItem(PIX_STORAGE_KEY)
+  } catch {
+    // ok
+  }
+}
+
 /** Tudo que precisa do contexto da Whop: campos, botão de pagar e o PIX pendente. */
 function PaymentBlock({ amountCents, error, setError, checkForm, billing, charge, onStart, onDone }: PaymentBlockProps) {
   const { pay, canPay } = useWhopPay()
-  const resume = useWhopResume()
   const [method, setMethod] = useState<string | undefined>(undefined)
   const [ready, setReady] = useState(false)
   const [submitting, setSubmitting] = useState(false)
-  // PIX gerado mas ainda não pago: guardamos para reabrir o QR code.
+  // PIX gerado e ainda não pago. Fica guardado na sessão: quem sai para o app do
+  // banco e volta (o celular pode recarregar a página) reencontra o mesmo código.
   const [pendingPix, setPendingPix] = useState<WhopServerPayment | null>(null)
+
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(sessionStorage.getItem(PIX_STORAGE_KEY) || "null")
+      if (saved?.id && saved.amountCents === amountCents) setPendingPix({ id: saved.id })
+    } catch {
+      // nada salvo
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const isPix = method === "pix"
 
@@ -558,7 +578,14 @@ function PaymentBlock({ amountCents, error, setError, checkForm, billing, charge
         onDone(outcome.paymentId, outcome.status)
         return
       case "pending":
-        if (payment) setPendingPix(payment)
+        if (payment?.id) {
+          setPendingPix(payment)
+          try {
+            sessionStorage.setItem(PIX_STORAGE_KEY, JSON.stringify({ id: payment.id, amountCents }))
+          } catch {
+            // segue sem persistir
+          }
+        }
         return
       case "redirected":
       case "cancelled":
@@ -592,41 +619,20 @@ function PaymentBlock({ amountCents, error, setError, checkForm, billing, charge
     }
   }
 
-  const reopenPix = async () => {
-    if (!pendingPix || submitting) return
-    setSubmitting(true)
-    try {
-      handle(await resume(pendingPix, "pix"), pendingPix)
-    } finally {
-      setSubmitting(false)
-    }
-  }
-
   if (pendingPix?.id) {
     return (
-      <div id="f-payment" className="rounded-lg border border-[#059669]/40 bg-[#ecfdf5] p-5 text-center">
-        <QrCode className="mx-auto h-10 w-10 text-[#059669]" />
-        <p className="mt-3 font-bold text-gray-900">Seu PIX de {brl(amountCents)} foi gerado</p>
-        <p className="mt-1 text-sm text-gray-700">
-          Pague pelo app do seu banco. Assim que o pagamento cair, a confirmação aparece na próxima tela.
-        </p>
-        <button
-          type="button"
-          onClick={reopenPix}
-          disabled={submitting}
-          className="mt-4 w-full h-12 rounded-lg bg-[#059669] hover:bg-[#047857] disabled:opacity-60 text-white font-bold flex items-center justify-center gap-2"
-        >
-          {submitting ? <Loader2 className="h-5 w-5 animate-spin" /> : <QrCode className="h-5 w-5" />}
-          Ver o QR code do PIX
-        </button>
-        <button
-          type="button"
-          onClick={() => onDone(pendingPix.id!, "pending")}
-          className="mt-3 w-full h-12 rounded-lg border border-[#059669] bg-white text-[#059669] font-bold hover:bg-[#ecfdf5]"
-        >
-          Já paguei
-        </button>
-      </div>
+      <PixPanel
+        paymentId={pendingPix.id}
+        amountCents={amountCents}
+        onPaid={() => {
+          clearPendingPix()
+          onDone(pendingPix.id!, "succeeded")
+        }}
+        onChangeMethod={() => {
+          clearPendingPix()
+          setPendingPix(null)
+        }}
+      />
     )
   }
 
@@ -638,7 +644,7 @@ function PaymentBlock({ amountCents, error, setError, checkForm, billing, charge
 
       {isPix && (
         <p className="mt-3 text-sm text-gray-600">
-          Ao tocar em pagar, abre a tela segura do Pix com o QR code e o código copia e cola. Você paga pelo app do seu banco e a aprovação é na hora.
+          Ao tocar em pagar, o código Pix copia e cola e o QR code aparecem aqui mesmo. Você paga pelo app do seu banco e a aprovação é na hora.
         </p>
       )}
 

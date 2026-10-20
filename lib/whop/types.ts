@@ -85,7 +85,17 @@ export interface WhopPaymentProgress {
     | "processing"
     | "succeeded"
     | "canceled"
-  next_action: { type: string } | null
+  /** Etapa pendente. No PIX: type "display_instructions", data.kind "qr", data.qr.qr_code = código copia e cola. */
+  next_action: {
+    type: string
+    render?: string[]
+    data?: {
+      kind?: string
+      url?: string
+      qr?: { qr_code?: string; qr_format?: string; expires_at?: string; amount?: WhopMoney; document_url?: string }
+      [key: string]: unknown
+    }
+  } | null
   last_payment_error: { code: string | null; decline_code: string | null; message: string | null } | null
   processing_details: unknown | null
 }

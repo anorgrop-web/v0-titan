@@ -47,6 +47,9 @@ async function settle(whop: any, payment: WhopServerPayment, method?: string): P
   if (payment.error || !payment.id) return { status: "failed", message: payment.error || GENERIC_FAILURE }
   if (payment.status === "paid") return { status: "succeeded", paymentId: payment.id }
   if (!payment.client_secret) return { status: "failed", message: GENERIC_FAILURE }
+  // PIX: o diálogo da Whop só mostra o QR code (sem copia e cola). O checkout
+  // exibe o próprio painel (components/checkout/pix-panel.tsx).
+  if (method === "pix") return { status: "pending", paymentId: payment.id }
 
   const result = await whop.payments.handleNextAction({ clientSecret: payment.client_secret })
   if (result.redirected) return { status: "redirected" }
