@@ -125,18 +125,35 @@ export function PixPanel({ paymentId, amountCents, onPaid, onChangeMethod }: Pix
         </div>
       ) : (
         <>
-          {/* Celular primeiro: copiar e colar no app do banco. */}
-          <div className="mt-4">
+          {/* QR code em cima, visível também no celular. */}
+          <div className="mt-4 text-center">
+            <p className="flex items-center justify-center gap-1.5 text-sm font-semibold text-gray-900">
+              <QrCode className="h-4 w-4 text-[#059669]" /> Escaneie o QR code
+            </p>
+            {qrImage ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={qrImage} alt="QR code do Pix" className="mx-auto mt-3 h-52 w-52 rounded-lg border border-gray-200 bg-white p-2" />
+            ) : (
+              <div className="mx-auto mt-3 flex h-52 w-52 items-center justify-center rounded-lg bg-white">
+                <Loader2 className="h-6 w-6 animate-spin text-[#059669]" />
+              </div>
+            )}
+          </div>
+
+          {/* Logo abaixo: copia e cola com botão — o caminho de quem está no celular. */}
+          <div className="mt-5 border-t border-[#059669]/20 pt-5">
             <p className="flex items-center gap-1.5 text-sm font-semibold text-gray-900">
-              <Smartphone className="h-4 w-4 text-[#059669]" /> Pix copia e cola
+              <Smartphone className="h-4 w-4 text-[#059669]" /> Ou use o Pix copia e cola
             </p>
             <textarea
               id="pix-code"
               readOnly
               value={code}
               rows={3}
+              onClick={copy}
               onFocus={(event) => event.currentTarget.select()}
-              className="mt-2 w-full resize-none rounded-lg border border-gray-300 bg-white p-3 font-mono text-xs text-gray-700 outline-none"
+              aria-label="Código Pix copia e cola (toque para copiar)"
+              className="mt-2 w-full cursor-pointer resize-none rounded-lg border border-gray-300 bg-white p-3 font-mono text-xs text-gray-700 outline-none"
             />
             <button
               type="button"
@@ -158,16 +175,6 @@ export function PixPanel({ paymentId, amountCents, onPaid, onChangeMethod }: Pix
               <li>2. Cole o código e confirme o pagamento.</li>
               <li>3. Volte para esta página — a confirmação aparece sozinha.</li>
             </ol>
-          </div>
-
-          <div className="mt-5 border-t border-[#059669]/20 pt-5 text-center">
-            <p className="flex items-center justify-center gap-1.5 text-sm font-semibold text-gray-900">
-              <QrCode className="h-4 w-4 text-[#059669]" /> Ou escaneie o QR code
-            </p>
-            {qrImage && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={qrImage} alt="QR code do Pix" className="mx-auto mt-3 h-48 w-48 rounded-lg bg-white p-2" />
-            )}
           </div>
 
           <p className="mt-5 flex items-center justify-center gap-2 text-sm text-gray-600">
