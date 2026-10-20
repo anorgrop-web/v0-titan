@@ -100,6 +100,8 @@ export function WhopPayments({
   return (
     <WhopElements
       elements={getLoader()}
+      // Textos dos campos da Whop em português.
+      locale="pt"
       {...(environment === "sandbox" ? ({ environment: "sandbox" } as any) : {})}
       onLoadError={(_error, retry) => {
         retryRef.current = retry
@@ -145,16 +147,17 @@ export interface WhopPaymentFieldsProps {
 }
 
 /**
- * Seletor de método + campos do cartão, em frames isolados (PCI). Cartão usa os
- * dados do NOSSO formulário (billingDetails "never"); os demais métodos (PIX)
- * ficam em "minimal" para o elemento pedir o que o método exigir (ex.: CPF).
+ * Seletor de método + campos do cartão, em frames isolados (PCI). O bloco de
+ * dados de cobrança fica escondido (billingDetails "never") em TODOS os métodos:
+ * nome, endereço e telefone vêm do NOSSO formulário e vão no
+ * createConfirmationToken — o cliente não digita nada duas vezes.
  * BrandingElement é o aviso de merchant-of-record da Whop: OBRIGATÓRIO.
  */
 export function WhopPaymentFields({ onReadyChange, onMethodChange, method }: WhopPaymentFieldsProps) {
   return (
     <div className="space-y-3">
       <PaymentElement
-        fields={{ billingDetails: method === "card" || !method ? "never" : "minimal", phone: "never" }}
+        fields={{ billingDetails: "never", phone: "never" }}
         wallets={{ applePay: "never", googlePay: "never", payPal: "never" } as any}
         onChange={(event) => {
           onReadyChange?.(event.complete)

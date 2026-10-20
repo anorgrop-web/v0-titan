@@ -638,7 +638,7 @@ function PaymentBlock({ amountCents, error, setError, checkForm, billing, charge
 
       {isPix && (
         <p className="mt-3 text-sm text-gray-600">
-          Ao tocar em pagar, o QR code do Pix aparece aqui mesmo. Você paga pelo app do seu banco e a aprovação é na hora.
+          Ao tocar em pagar, abre a tela segura do Pix com o QR code e o código copia e cola. Você paga pelo app do seu banco e a aprovação é na hora.
         </p>
       )}
 
