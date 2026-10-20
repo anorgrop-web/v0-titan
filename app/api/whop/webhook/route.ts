@@ -1,16 +1,25 @@
 import { NextResponse, type NextRequest } from "next/server"
-import { verifyWhopWebhook, type WhopPayment } from "@/lib/whop"
+import { afterResponse, verifyWhopWebhook, type WhopPayment } from "@/lib/whop"
+import { insertOrder, isSupabaseConfigured, orderFromPayment, orderNumber, updateOrder } from "@/lib/orders"
+import { confirmationEmail, isEmailConfigured, sendEmail } from "@/lib/email"
 
 // Webhook da Whop. A venda só é considerada confirmada AQUI (payment.succeeded):
 // o PIX cai de forma assíncrona e a página de obrigado não prova pagamento.
 //
-// Este projeto não tem banco: o pedido (kit, comprador, CPF, endereço) fica no
-// próprio pagamento da Whop — metadata + shipping_address — e aparece no painel.
-// Este handler registra a venda no log e é o lugar para plugar e-mail,
-// planilha, Meta CAPI etc. Trabalho lento vai em afterResponse() (lib/whop):
+// payment.succeeded → grava o pedido na Supabase (public.titanus_orders) ANTES
+// de responder — se a gravação falhar, devolvemos 500 e a Whop reenvia. O
+// e-mail de confirmação (Resend) vai depois da resposta, em afterResponse():
 // a Whop reenvia qualquer entrega que não responder em 5 segundos.
+//
+// Reenvios são seguros: o pedido é único por payment_id e o e-mail só sai
+// quando a linha acabou de ser criada.
 
 export const dynamic = "force-dynamic"
+
+/** Reembolsos e disputas chegam no formato antigo: payment: { id } em vez de payment_id. */
+function paymentIdOf(data: any): string | null {
+  return data?.payment_id || data?.payment?.id || null
+}
 
 export async function POST(request: NextRequest) {
   const rawBody = await request.text()
@@ -23,29 +32,56 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "invalid signature" }, { status: 401 })
   }
 
-  if (event.type === "payment.succeeded") {
-    const payment = event.data as WhopPayment
-    if (payment.metadata?.type === "titanus-order") {
-      console.log(
-        "[whop] VENDA CONFIRMADA",
-        JSON.stringify({
-          payment: payment.id,
-          kit: payment.metadata.kit,
-          amount_cents: payment.metadata.amount_cents,
-          method: payment.payment_method_type ?? payment.metadata.payment_method,
-          email: payment.customer_email,
-          name: payment.metadata.customer_name,
-          city: payment.shipping_address?.city,
-          state: payment.shipping_address?.state,
-        }),
-      )
+  try {
+    if (event.type === "payment.succeeded") {
+      const payment = event.data as WhopPayment
+      if (payment.metadata?.type === "titanus-order") await handlePaid(payment)
+    } else if (event.type === "payment.failed") {
+      const payment = event.data as WhopPayment
+      if (payment.metadata?.type === "titanus-order") console.log("[whop] pagamento falhou", payment.id, payment.failure_message)
+    } else if (event.type === "refund.created" || event.type === "refund.updated") {
+      const paymentId = paymentIdOf(event.data)
+      console.log(`[whop] ${event.type}`, paymentId)
+      if (paymentId && isSupabaseConfigured()) {
+        await updateOrder(paymentId, { status: "refunded", refunded_at: new Date().toISOString() })
+      }
+    } else if (event.type === "dispute.created") {
+      const paymentId = paymentIdOf(event.data)
+      console.log("[whop] dispute.created", paymentId)
+      if (paymentId && isSupabaseConfigured()) {
+        await updateOrder(paymentId, { status: "disputed", disputed_at: new Date().toISOString() })
+      }
     }
-  } else if (event.type === "payment.failed") {
-    const payment = event.data as WhopPayment
-    if (payment.metadata?.type === "titanus-order") console.log("[whop] pagamento falhou", payment.id, payment.failure_message)
-  } else if (event.type === "refund.created" || event.type === "dispute.created") {
-    console.log(`[whop] ${event.type}`, JSON.stringify(event.data).slice(0, 500))
+  } catch (err) {
+    console.error("[whop] webhook handler falhou:", err)
+    // 500 → a Whop tenta de novo.
+    return NextResponse.json({ error: "handler failed" }, { status: 500 })
   }
 
   return NextResponse.json({ received: true })
+}
+
+async function handlePaid(payment: WhopPayment) {
+  const order = orderFromPayment(payment)
+  console.log(
+    "[whop] VENDA CONFIRMADA",
+    JSON.stringify({ payment: payment.id, kit: order.kit, amount_cents: order.amount_cents, method: order.payment_method, city: order.city, state: order.state }),
+  )
+
+  if (!isSupabaseConfigured()) {
+    console.error("[orders] SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY ausentes — pedido NÃO gravado:", payment.id)
+    return
+  }
+
+  const created = await insertOrder(order)
+  if (!created) return // reenvio do webhook: pedido já gravado (e e-mail já tratado)
+  console.log("[orders] pedido gravado", orderNumber(created.id), payment.id)
+
+  if (!created.email || !isEmailConfigured()) return
+  afterResponse(async () => {
+    const message = confirmationEmail(created)
+    await sendEmail({ to: created.email!, ...message, idempotencyKey: `order-confirmation/${created.payment_id}` })
+    await updateOrder(created.payment_id, { confirmation_email_sent_at: new Date().toISOString() })
+    console.log("[email] confirmação enviada", orderNumber(created.id))
+  })
 }

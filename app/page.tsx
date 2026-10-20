@@ -8,9 +8,9 @@ import BenefitsSection from "@/components/benefits-section"
 import CraftsmanshipSection from "@/components/craftsmanship-section"
 import InvestmentSection from "@/components/investment-section"
 import CompetitorComparisonSection from "@/components/competitor-comparison-section"
-import TestimonialsSection from "@/components/testimonials-section"
+// import TestimonialsSection from "@/components/testimonials-section"
 import ReviewsSection from "@/components/reviews-section"
-import ExpertSection from "@/components/expert-section"
+// import ExpertSection from "@/components/expert-section"
 import FaqSection from "@/components/faq-section"
 import GuaranteeSection from "@/components/guarantee-section"
 import Footer from "@/components/footer"
@@ -34,11 +34,12 @@ export default function Home() {
       <CraftsmanshipSection />
       <InvestmentSection />
       <CompetitorComparisonSection />
+      {/* Ocultadas para deixar a página mais "white": vídeos de depoimento e seção do chef. */}
+      {/* <TestimonialsSection /> */}
       <div id="avaliacoes">
-        <TestimonialsSection />
+        <ReviewsSection />
       </div>
-      <ReviewsSection />
-      <ExpertSection />
+      {/* <ExpertSection /> */}
       <div id="faq">
         <FaqSection />
       </div>

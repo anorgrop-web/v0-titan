@@ -32,7 +32,7 @@ export default function CraftsmanshipSection() {
             <div className="order-1 md:order-2">
               <div className="relative">
                 <Image
-                  src="/images/design-mode/Stream-iframe%20videodelivery.gif"
+                  src="/images/design-mode/stream-iframe-videodelivery.gif"
                   alt="Tábua de corte com marcas de uso mostrando resistência"
                   width={500}
                   height={600}
@@ -49,7 +49,7 @@ export default function CraftsmanshipSection() {
             <div className="order-1">
               <div className="relative">
                 <Image
-                  src="/images/design-mode/Pure%20Titanium%20Cutting%20Board.gif"
+                  src="/images/design-mode/pure-titanium-cutting-board.gif"
                   alt="Pessoa cortando maçã na tábua de titânio"
                   width={500}
                   height={400}
@@ -145,7 +145,7 @@ export default function CraftsmanshipSection() {
             <div className="order-1 md:order-2">
               <div className="relative">
                 <Image
-                  src="/images/design-mode/20250826_2034_Tabuas%20de%20Corte%20Elegantes_remix_01k3mbmn9meysrfewqn994zs3b.png"
+                  src="/images/design-mode/tabuas-de-corte-elegantes.png"
                   alt="Duas tábuas de titânio com alimentos separados"
                   width={500}
                   height={600}
