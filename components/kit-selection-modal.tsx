@@ -22,6 +22,7 @@ export default function KitSelectionModal({ isOpen, onClose }: KitSelectionModal
       id: index + 1,
       key,
       title: kit.description,
+      name: kit.name,
       price: kit.compareAtCents ? `de ${brl(kit.compareAtCents)} POR ${brl(kit.cents)}` : brl(kit.cents),
       discount: kit.discountLabel,
       image: kit.image,
@@ -40,34 +41,34 @@ export default function KitSelectionModal({ isOpen, onClose }: KitSelectionModal
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-3 sm:p-4">
       <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b">
+        <div className="flex items-start justify-between p-4 sm:p-6 border-b">
           <div className="flex-1 text-center">
-            <h2 className="text-2xl font-bold text-gray-900">Escolha o kit de sua preferência</h2>
-            <p className="text-gray-600 mt-1">Garanta uma, duas ou três tábuas TITANUS CUT®, em tamanhos diferentes.</p>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Escolha o kit de sua preferência</h2>
+            <p className="text-sm sm:text-base text-gray-600 mt-1">Garanta uma, duas ou três tábuas TITANUS CUT®, em tamanhos diferentes.</p>
           </div>
-          <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full transition-colors ml-4">
+          <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full transition-colors ml-2 shrink-0">
             <X className="h-6 w-6" />
           </button>
         </div>
 
         {/* Cards Grid */}
-        <div className="p-6">
-          <div className="grid grid-cols-2 gap-4">
+        <div className="p-4 sm:p-6">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
             {kits.map((kit) => (
               <div key={kit.id} className="relative">
                 {kit.id === 4 && (
                   <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 z-10">
-                    <span className="bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                    <span className="whitespace-nowrap bg-orange-500 text-white text-[11px] sm:text-xs font-bold px-2.5 sm:px-3 py-1 rounded-full shadow-lg">
                       Mais escolhido
                     </span>
                   </div>
                 )}
                 <button
                   onClick={() => setSelectedKit(kit.id)}
-                  className={`p-4 rounded-xl border-2 transition-all hover:shadow-md w-full ${
+                  className={`p-2.5 sm:p-4 rounded-xl border-2 transition-all hover:shadow-md w-full ${
                     selectedKit === kit.id
                       ? "border-emerald-500 bg-emerald-50"
                       : "border-gray-200 hover:border-gray-300"
@@ -82,7 +83,7 @@ export default function KitSelectionModal({ isOpen, onClose }: KitSelectionModal
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <h3 className="font-medium text-gray-900 text-sm text-center">{kit.title}</h3>
+                  <h3 className="font-medium text-gray-900 text-xs sm:text-sm text-center">{kit.title}</h3>
                   <div className="mt-2 text-center">
                     {kit.id === 4 ? (
                       <div>
@@ -108,12 +109,12 @@ export default function KitSelectionModal({ isOpen, onClose }: KitSelectionModal
         </div>
 
         {/* Footer */}
-        <div className="p-6 border-t">
+        <div className="sticky bottom-0 bg-white p-4 sm:p-6 border-t">
           <Button
             onClick={handlePurchase}
-            className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 text-lg font-bold rounded-xl"
+            className="w-full h-auto whitespace-normal bg-emerald-600 hover:bg-emerald-700 text-white py-3 text-base sm:text-lg font-bold leading-tight rounded-xl"
           >
-            Continuar com {kits.find((k) => k.id === selectedKit)?.title}
+            Continuar com {kits.find((k) => k.id === selectedKit)?.name}
           </Button>
         </div>
       </div>
