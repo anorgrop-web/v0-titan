@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
   const confirmationToken = str(body?.confirmationToken, 255)
   if (!/^ctok_[A-Za-z0-9_]+$/.test(confirmationToken)) return fail("Confira os dados de pagamento.")
 
-  const order = computeOrder(body?.kit)
+  const order = computeOrder(body?.kit, body?.shipping)
   if (!order) return fail("Kit inválido. Volte e escolha o seu kit.")
 
   const customer = body?.customer ?? {}
@@ -78,6 +78,11 @@ export async function POST(request: NextRequest) {
     kit_name: order.kit.name,
     qty: String(order.kit.qty),
     amount_cents: String(order.amountCents),
+    shipping_method: order.shipping.key,
+    shipping_name: order.shipping.name,
+    shipping_cents: String(order.shippingCents),
+    // O webhook da Whop pode chegar sem customer_email — o e-mail viaja aqui também.
+    customer_email: email,
     customer_name: name,
     customer_cpf: cpf,
     customer_phone: phone,

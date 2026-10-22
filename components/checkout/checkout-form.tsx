@@ -6,9 +6,19 @@ import Link from "next/link"
 import { CreditCard, Loader2, Lock, MapPin, QrCode, ShieldCheck, Truck, User } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { fetchCep } from "@/lib/cep-service"
-import { deliveryEstimate } from "@/lib/delivery"
 import { COMPANY } from "@/lib/company"
-import { KITS, KIT_ORDER, KIT_PADRAO, computeOrder, isKitKey, type KitKey } from "@/lib/pricing"
+import {
+  KITS,
+  KIT_ORDER,
+  KIT_PADRAO,
+  SHIPPING_OPTIONS,
+  SHIPPING_ORDER,
+  SHIPPING_PADRAO,
+  computeOrder,
+  isKitKey,
+  type KitKey,
+  type ShippingKey,
+} from "@/lib/pricing"
 import { PURCHASE_STORAGE_KEY, captureUtms, track } from "@/lib/track"
 import { PixPanel } from "@/components/checkout/pix-panel"
 import {
@@ -176,7 +186,8 @@ export default function CheckoutForm({ accountId, environment, paymentMethods }:
   const viewFired = useRef(false)
   const utmRef = useRef<Record<string, string>>({})
 
-  const order = computeOrder(kitKey)!
+  const [shippingKey, setShippingKey] = useState<ShippingKey>(SHIPPING_PADRAO)
+  const order = computeOrder(kitKey, shippingKey)!
   const kit = order.kit
 
   const set = useCallback((key: keyof FormState, value: string) => {
@@ -293,6 +304,7 @@ export default function CheckoutForm({ accountId, environment, paymentMethods }:
       body: JSON.stringify({
         confirmationToken,
         kit: kitKey,
+        shipping: shippingKey,
         method,
         customer: { email: form.email, name: form.name, cpf: form.cpf, phone: form.phone },
         address: {
@@ -389,7 +401,9 @@ export default function CheckoutForm({ accountId, environment, paymentMethods }:
                 <div className="flex justify-between">
                   <dt className="text-gray-600">
                     Frete
-                    <span className="block text-xs text-gray-500">Chega em {deliveryEstimate(form.state)}</span>
+                    <span className="block text-xs text-gray-500">
+                      {order.shipping.name} · {order.shipping.deliveryTime}
+                    </span>
                   </dt>
                   <dd className={order.shippingCents === 0 ? "font-bold text-[#059669]" : "text-gray-900"}>
                     {order.shippingCents === 0 ? "GRÁTIS" : brl(order.shippingCents)}
@@ -461,15 +475,49 @@ export default function CheckoutForm({ accountId, environment, paymentMethods }:
                 </div>
               </div>
 
-              <div className="mt-4 flex items-center justify-between rounded-lg border border-[#059669]/30 bg-[#ecfdf5] p-3 text-sm">
-                <span className="text-gray-800">
-                  Envio para todo o Brasil
-                  <span className="block text-xs text-gray-600">Chega em {deliveryEstimate(form.state)}</span>
-                </span>
-                <span className={order.shippingCents === 0 ? "font-bold text-[#059669]" : "font-semibold text-gray-900"}>
-                  {order.shippingCents === 0 ? "GRÁTIS" : brl(order.shippingCents)}
-                </span>
-              </div>
+              {/* Fretes — como no checkout Adoorei: PAC grátis, Jadlog e Sedex. */}
+              <fieldset className="mt-5">
+                <legend className="mb-2 text-sm font-semibold text-gray-900">Escolha o frete</legend>
+                <div className="space-y-2">
+                  {SHIPPING_ORDER.map((key) => {
+                    const option = SHIPPING_OPTIONS[key]
+                    const selected = shippingKey === key
+                    return (
+                      <label
+                        key={key}
+                        className={cn(
+                          "flex cursor-pointer items-center justify-between gap-3 rounded-lg border p-3 sm:p-4 transition-colors",
+                          selected ? "border-[#059669] bg-[#ecfdf5]" : "border-gray-200 hover:border-gray-300",
+                          paymentLocked && !selected ? "pointer-events-none opacity-50" : "",
+                        )}
+                      >
+                        <span className="flex items-center gap-3">
+                          <input
+                            type="radio"
+                            name="shipping"
+                            value={key}
+                            checked={selected}
+                            disabled={paymentLocked}
+                            onChange={() => setShippingKey(key)}
+                            className="h-4 w-4 shrink-0 accent-[#059669]"
+                          />
+                          <span>
+                            <span className="block text-sm font-medium text-gray-900">{option.name}</span>
+                            <span className="block text-xs text-gray-500">{option.deliveryTime}</span>
+                          </span>
+                        </span>
+                        <span className="flex shrink-0 items-center gap-3">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={option.logo} alt="" className="h-5 w-12 object-contain" />
+                          <span className={cn("w-16 text-right text-sm font-semibold", option.cents === 0 ? "text-[#059669]" : "text-gray-900")}>
+                            {option.cents === 0 ? "Grátis" : brl(option.cents)}
+                          </span>
+                        </span>
+                      </label>
+                    )
+                  })}
+                </div>
+              </fieldset>
             </Section>
 
             <Section step={3} icon={<CreditCard className="h-5 w-5" />} title="Pagamento" subtitle="Pix ou cartão de crédito.">

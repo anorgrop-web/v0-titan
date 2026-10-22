@@ -19,6 +19,9 @@ export interface OrderRow {
   amount_cents: number
   currency: string
   payment_method: string | null
+  shipping_method: string | null
+  shipping_name: string | null
+  shipping_cents: number | null
   email: string | null
   name: string | null
   cpf: string | null
@@ -76,7 +79,10 @@ export function orderFromPayment(payment: WhopPayment) {
     amount_cents: amountFromWhop > 0 ? amountFromWhop : Number(meta.amount_cents || 0),
     currency: (payment.currency || "brl").toUpperCase(),
     payment_method: payment.payment_method_type ?? meta.payment_method ?? null,
-    email: payment.customer_email ?? null,
+    shipping_method: meta.shipping_method ?? null,
+    shipping_name: meta.shipping_name ?? null,
+    shipping_cents: meta.shipping_cents ? Number(meta.shipping_cents) : null,
+    email: (payment.customer_email || meta.customer_email || null) as string | null,
     name: meta.customer_name ?? address?.name ?? null,
     cpf: meta.customer_cpf ?? null,
     phone: meta.customer_phone ?? payment.customer_phone ?? null,

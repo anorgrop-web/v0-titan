@@ -60,8 +60,31 @@ export const KITS: Record<KitKey, Kit> = {
 export const KIT_ORDER: KitKey[] = ["pequena", "media", "grande", "kit3"]
 export const KIT_PADRAO: KitKey = "kit3"
 
-/** Frete em centavos. 0 = grátis. */
-export const SHIPPING_CENTS = 0
+// Fretes — as mesmas opções do checkout Adoorei (Correios PAC, Jadlog, Sedex).
+export type ShippingKey = "pac" | "jadlog" | "sedex"
+
+export interface ShippingOption {
+  key: ShippingKey
+  name: string
+  /** Prazo exibido ao cliente. */
+  deliveryTime: string
+  /** Centavos. 0 = grátis. */
+  cents: number
+  logo: string
+}
+
+export const SHIPPING_OPTIONS: Record<ShippingKey, ShippingOption> = {
+  pac: { key: "pac", name: "Correios PAC", deliveryTime: "8 a 12 dias úteis", cents: 0, logo: "https://anorcorp.com/Comum%20/correios.png" },
+  jadlog: { key: "jadlog", name: "Jadlog", deliveryTime: "8 a 10 dias úteis", cents: 1498, logo: "https://anorcorp.com/Comum%20/Group%201102.png" },
+  sedex: { key: "sedex", name: "Correios Sedex", deliveryTime: "4 a 7 dias úteis", cents: 2498, logo: "https://anorcorp.com/Comum%20/correios.png" },
+}
+
+export const SHIPPING_ORDER: ShippingKey[] = ["pac", "jadlog", "sedex"]
+export const SHIPPING_PADRAO: ShippingKey = "pac"
+
+export function isShippingKey(value: unknown): value is ShippingKey {
+  return typeof value === "string" && value in SHIPPING_OPTIONS
+}
 
 export function isKitKey(value: unknown): value is KitKey {
   return typeof value === "string" && value in KITS
@@ -73,14 +96,16 @@ export function checkoutPath(kit: KitKey): string {
 
 export interface KitOrder {
   kit: Kit
+  shipping: ShippingOption
   kitCents: number
   shippingCents: number
   amountCents: number
 }
 
-/** A MESMA conta no navegador e no servidor. */
-export function computeOrder(kitKey: unknown): KitOrder | null {
+/** A MESMA conta no navegador e no servidor. Frete desconhecido cai no padrão (PAC grátis). */
+export function computeOrder(kitKey: unknown, shippingKey?: unknown): KitOrder | null {
   if (!isKitKey(kitKey)) return null
   const kit = KITS[kitKey]
-  return { kit, kitCents: kit.cents, shippingCents: SHIPPING_CENTS, amountCents: kit.cents + SHIPPING_CENTS }
+  const shipping = SHIPPING_OPTIONS[isShippingKey(shippingKey) ? shippingKey : SHIPPING_PADRAO]
+  return { kit, shipping, kitCents: kit.cents, shippingCents: shipping.cents, amountCents: kit.cents + shipping.cents }
 }

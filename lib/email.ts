@@ -4,6 +4,7 @@
 import { COMPANY } from "@/lib/company"
 import { brl } from "@/lib/br-format"
 import { deliveryEstimate } from "@/lib/delivery"
+import { SHIPPING_OPTIONS, isShippingKey } from "@/lib/pricing"
 import { orderNumber, type OrderRow } from "@/lib/orders"
 
 export function isEmailConfigured(): boolean {
@@ -12,6 +13,11 @@ export function isEmailConfigured(): boolean {
 
 const escapeHtml = (value: unknown) =>
   String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!)
+
+/** Prazo da modalidade de frete escolhida; sem ela, a estimativa por estado. */
+function deliveryTime(order: OrderRow): string {
+  return isShippingKey(order.shipping_method) ? SHIPPING_OPTIONS[order.shipping_method].deliveryTime : deliveryEstimate(order.state)
+}
 
 const METHOD_LABEL: Record<string, string> = { pix: "Pix", card: "Cartão de crédito" }
 
@@ -37,11 +43,12 @@ export function confirmationEmail(order: OrderRow) {
       <tr><td style="padding:12px 14px;color:#6b7280">Pedido</td><td style="padding:12px 14px;text-align:right;font-weight:bold">${number}</td></tr>
       <tr><td style="padding:12px 14px;color:#6b7280;border-top:1px solid #f3f4f6">Produto</td><td style="padding:12px 14px;text-align:right;border-top:1px solid #f3f4f6">${escapeHtml(order.kit_name || "Titanus Cut®")}</td></tr>
       <tr><td style="padding:12px 14px;color:#6b7280;border-top:1px solid #f3f4f6">Pagamento</td><td style="padding:12px 14px;text-align:right;border-top:1px solid #f3f4f6">${escapeHtml(METHOD_LABEL[order.payment_method || ""] || order.payment_method || "—")}</td></tr>
+      <tr><td style="padding:12px 14px;color:#6b7280;border-top:1px solid #f3f4f6">Frete</td><td style="padding:12px 14px;text-align:right;border-top:1px solid #f3f4f6">${escapeHtml(order.shipping_name || "Correios PAC")} — ${order.shipping_cents ? brl(order.shipping_cents) : "Grátis"}</td></tr>
       <tr><td style="padding:12px 14px;color:#6b7280;border-top:1px solid #f3f4f6">Total</td><td style="padding:12px 14px;text-align:right;border-top:1px solid #f3f4f6;font-weight:bold">${brl(order.amount_cents)}</td></tr>
     </table>
     <p style="margin:20px 0 6px;font-size:14px;font-weight:bold">Endereço de entrega</p>
     <p style="margin:0;font-size:14px;line-height:1.5;color:#374151">${escapeHtml(order.name)}<br>${address}</p>
-    <p style="margin:20px 0 0;font-size:14px;line-height:1.5;color:#374151">Prazo estimado: <b>${deliveryEstimate(order.state)}</b>. Assim que o pedido for despachado, você recebe o código de rastreio neste e-mail.</p>
+    <p style="margin:20px 0 0;font-size:14px;line-height:1.5;color:#374151">Prazo estimado: <b>${escapeHtml(deliveryTime(order))}</b>. Assim que o pedido for despachado, você recebe o código de rastreio neste e-mail.</p>
   </td></tr>
   <tr><td style="padding:16px 24px;background:#f9fafb;font-size:12px;color:#6b7280;line-height:1.5">
     Dúvidas? Responda este e-mail ou escreva para <a href="mailto:${COMPANY.email}" style="color:#059669">${COMPANY.email}</a>.<br>
@@ -56,7 +63,8 @@ export function confirmationEmail(order: OrderRow) {
     `${firstName}, recebemos o seu pagamento. Obrigado pela compra!`,
     `Produto: ${order.kit_name || "Titanus Cut®"}`,
     `Total: ${brl(order.amount_cents)}`,
-    `Prazo estimado: ${deliveryEstimate(order.state)}. Você recebe o rastreio por e-mail quando o pedido for despachado.`,
+    `Frete: ${order.shipping_name || "Correios PAC"}`,
+    `Prazo estimado: ${deliveryTime(order)}. Você recebe o rastreio por e-mail quando o pedido for despachado.`,
     `Dúvidas: ${COMPANY.email}`,
   ].join("\n")
 

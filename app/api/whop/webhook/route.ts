@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server"
-import { afterResponse, verifyWhopWebhook, type WhopPayment } from "@/lib/whop"
+import { afterResponse, retrievePayment, verifyWhopWebhook, type WhopPayment } from "@/lib/whop"
 import { insertOrder, isSupabaseConfigured, orderFromPayment, orderNumber, updateOrder } from "@/lib/orders"
 import { confirmationEmail, isEmailConfigured, sendEmail } from "@/lib/email"
 
@@ -63,6 +63,15 @@ export async function POST(request: NextRequest) {
 
 async function handlePaid(payment: WhopPayment) {
   const order = orderFromPayment(payment)
+  // O payload do webhook pode vir sem customer_email (e pedidos antigos não têm
+  // o e-mail na metadata): nesse caso busca o pagamento completo na Whop.
+  if (!order.email) {
+    try {
+      order.email = (await retrievePayment(payment.id)).customer_email ?? null
+    } catch (err) {
+      console.error("[orders] não foi possível buscar o e-mail do pagamento", payment.id, err)
+    }
+  }
   console.log(
     "[whop] VENDA CONFIRMADA",
     JSON.stringify({ payment: payment.id, kit: order.kit, amount_cents: order.amount_cents, method: order.payment_method, city: order.city, state: order.state }),

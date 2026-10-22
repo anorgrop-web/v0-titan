@@ -161,6 +161,8 @@ export function WhopPaymentFields({ onReadyChange, onMethodChange, method }: Who
     <div className="space-y-3">
       <PaymentElement
         fields={{ billingDetails: "never", phone: "never" }}
+        // PIX primeiro e já selecionado ao abrir o checkout.
+        order={["pix", "card"]}
         wallets={{ applePay: "never", googlePay: "never", payPal: "never" } as any}
         onChange={(event) => {
           onReadyChange?.(event.complete)
