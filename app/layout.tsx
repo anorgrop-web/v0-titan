@@ -75,6 +75,7 @@ export default function RootLayout({
               'https://connect.facebook.net/en_US/fbevents.js');
               fbq('init', '1486885339853503');
               fbq('init', '736939935257219');
+              fbq('init', '1905123930386703');
               fbq('track', 'PageView');
             `,
           }}
@@ -121,6 +122,12 @@ export default function RootLayout({
             width="1"
             style={{ display: "none" }}
             src="https://www.facebook.com/tr?id=736939935257219&ev=PageView&noscript=1"
+          />
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=1905123930386703&ev=PageView&noscript=1"
           />
         </noscript>
       </head>
