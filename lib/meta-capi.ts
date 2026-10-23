@@ -6,9 +6,8 @@
 // manda o Purchase daqui, com event_id = purchase_<payment id> — o MESMO id do
 // Purchase do navegador (/obrigado), então o Meta conta uma venda só.
 //
-// Env: META_CAPI_PIXELS = "pixelId:token[,pixelId:token]" — um token por
-// dataset (Gerenciador de Eventos → Configurações → API de Conversões →
-// Gerar token de acesso).
+// Env: META_PIXEL_ID (ID do Pixel/dataset) e META_CAPI_TOKEN (Gerenciador de
+// Eventos → dataset → Configurações → API de Conversões → Gerar token de acesso).
 
 import crypto from "crypto"
 
@@ -20,15 +19,9 @@ interface Target {
 }
 
 function targets(): Target[] {
-  return (process.env.META_CAPI_PIXELS || "")
-    .split(",")
-    .map((pair) => pair.trim())
-    .filter(Boolean)
-    .map((pair) => {
-      const [pixelId, ...rest] = pair.split(":")
-      return { pixelId: pixelId.trim(), token: rest.join(":").trim() }
-    })
-    .filter((t) => /^\d+$/.test(t.pixelId) && t.token)
+  const pixelId = (process.env.META_PIXEL_ID || "").trim()
+  const token = (process.env.META_CAPI_TOKEN || "").trim()
+  return /^\d+$/.test(pixelId) && token ? [{ pixelId, token }] : []
 }
 
 export function isMetaCapiConfigured(): boolean {
@@ -112,7 +105,7 @@ export interface CapiEvent {
 export async function sendCapiEvent(event: CapiEvent): Promise<void> {
   const list = targets()
   if (!list.length) {
-    console.error("[meta-capi] META_CAPI_PIXELS ausente — Purchase NÃO enviado pelo servidor:", event.eventId)
+    console.error("[meta-capi] META_PIXEL_ID / META_CAPI_TOKEN ausentes — Purchase NÃO enviado pelo servidor:", event.eventId)
     return
   }
   const body = JSON.stringify({
