@@ -83,6 +83,8 @@ export async function POST(request: NextRequest) {
     shipping_cents: String(order.shippingCents),
     // O webhook da Whop pode chegar sem customer_email — o e-mail viaja aqui também.
     customer_email: email,
+    // Página onde a compra começou (event_source_url do Purchase no Meta CAPI).
+    page_url: str(body?.url, 300),
     customer_name: name,
     customer_cpf: cpf,
     customer_phone: phone,

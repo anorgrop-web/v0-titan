@@ -312,6 +312,7 @@ export default function CheckoutForm({ accountId, environment, paymentMethods }:
           district: form.district, city: form.city, state: form.state,
         },
         utm: utmRef.current,
+        url: window.location.href,
       }),
     })
     const data = await response.json().catch(() => ({}))

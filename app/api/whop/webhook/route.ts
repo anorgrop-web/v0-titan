@@ -2,6 +2,8 @@ import { NextResponse, type NextRequest } from "next/server"
 import { afterResponse, retrievePayment, verifyWhopWebhook, type WhopPayment } from "@/lib/whop"
 import { insertOrder, isSupabaseConfigured, orderFromPayment, orderNumber, updateOrder } from "@/lib/orders"
 import { confirmationEmail, isEmailConfigured, sendEmail } from "@/lib/email"
+import { purchaseEvent } from "@/lib/purchase-event"
+import { sendCapiEvent } from "@/lib/meta-capi"
 
 // Webhook da Whop. A venda só é considerada confirmada AQUI (payment.succeeded):
 // o PIX cai de forma assíncrona e a página de obrigado não prova pagamento.
@@ -85,6 +87,9 @@ async function handlePaid(payment: WhopPayment) {
   const created = await insertOrder(order)
   if (!created) return // reenvio do webhook: pedido já gravado (e e-mail já tratado)
   console.log("[orders] pedido gravado", orderNumber(created.id), payment.id)
+
+  // Purchase pelo servidor (Meta CAPI) — mesmo event_id do Purchase do navegador.
+  afterResponse(() => sendCapiEvent(purchaseEvent(payment, created)))
 
   if (!created.email || !isEmailConfigured()) return
   afterResponse(async () => {
